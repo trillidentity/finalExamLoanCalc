@@ -80,7 +80,7 @@
 				</HBox>
 				<HBox alignment="CENTER" prefHeight="375.0" prefWidth="883.0">
 					<children>
-						<TableView prefHeight="309.0" prefWidth="815.0">
+						<TableView fx:id="tvResults" prefHeight="309.0" prefWidth="815.0">
 							<columns>
 								<TableColumn fx:id="colPaymentNumber" prefWidth="75.0" text="Payment #" />
 								<TableColumn prefWidth="114.0" text="Due Date" />
