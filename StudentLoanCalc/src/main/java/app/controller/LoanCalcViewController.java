@@ -70,8 +70,7 @@ public class LoanCalcViewController implements Initializable   {
 	private TableColumn<Payment, Double> colBalance;
 	
 	private ObservableList<Payment> paymentList = FXCollections.observableArrayList();
-	
-	//TODO: Account for all the other columns		
+			
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		colPaymentNumber.setCellValueFactory(new PropertyValueFactory<>("paymentNbr"));
@@ -81,7 +80,6 @@ public class LoanCalcViewController implements Initializable   {
 		colInterest.setCellValueFactory(new PropertyValueFactory<>("interest"));
 		colPrinciple.setCellValueFactory(new PropertyValueFactory<>("principle"));
 		colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
-		//TODO: Add a 'setCellValueFactory' entry for each column, mapping to each attribute in Payment
 		
 		tvResults.setItems(paymentList);
 	}
