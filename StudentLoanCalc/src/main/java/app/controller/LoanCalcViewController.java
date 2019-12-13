@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.StudentCalc;
+import app.LoanCalcHelper;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -22,6 +23,8 @@ public class LoanCalcViewController implements Initializable   {
 
 	private StudentCalc SC = null;
 	
+	private LoanCalcHelper loanCalcHelper = null;
+	
 	@FXML
 	private TextField LoanAmount;
 	
@@ -35,8 +38,13 @@ public class LoanCalcViewController implements Initializable   {
 	private DatePicker PaymentStartDate;
 	
 	@FXML
-	private Label lblTotalPayemnts;
+	private Label lblTotalPayments;
 
+	@FXML
+	private TextField AdditionalPayment;
+
+	@FXML
+	private Label lblTotalInterest;
 	
 	@FXML
 	private TableView<Payment> tvResults;
@@ -44,20 +52,35 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private TableColumn<Payment, Integer> colPaymentNumber;
 	
-	
+	@FXML
+	private Label ratePerMonth;
+
 	private ObservableList<Payment> paymentList = FXCollections.observableArrayList();
 	
-	//TODO: Account for all the other columns		
+	//TODO: Account for all the other columns	
+	@FXML
+	public TableColumn<Payment, String> paymentNbr, dueDate, payment, additionalPayment, interest, principle, balance;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		colPaymentNumber.setCellValueFactory(new PropertyValueFactory<>("paymentNbr"));
 		//TODO: Add a 'setCellValueFactor' entry for each column, mapping to each attribute in Payment
 		
+		dueDate.setCellValueFactory(new PropertyValueFactory<>("DueDate"));
+		payment.setCellValueFactory(new PropertyValueFactory<>("Payment"));
+		additionalPayment.setCellValueFactory(new PropertyValueFactory<>("AdditionalPayment"));
+		interest.setCellValueFactory(new PropertyValueFactory<>("Interest"));
+		principle.setCellValueFactory(new PropertyValueFactory<>("Principle"));
+		balance.setCellValueFactory(new PropertyValueFactory<>("Balance"));
 		tvResults.setItems(paymentList);
 	}
 
 	public void setMainApp(StudentCalc sc) {
 		this.SC = sc;
+	}
+	
+	public void setCalcHelper(LoanCalcHelper lc) {
+		this.loanCalcHelper = lc;
 	}
 	
 	/**
@@ -71,9 +94,29 @@ public class LoanCalcViewController implements Initializable   {
 
 		//	Examples- how to read data from the form
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());		
-		lblTotalPayemnts.setText("123");		
+		lblTotalPayments.setText("123");		
 		LocalDate localDate = PaymentStartDate.getValue();
 		
+		loanCalcHelper.calculateLoan(dLoanAmount, numberOfYears, annualInterestRate, startDate, additionalPayment);
+
+		Payment[] paymentDetails = loanCalcHelper.getMonthlyPaymentDetails();
+
+		double totalPayments = loanCalcHelper.getTotalPayment();
+		lblTotalPayments.setText("" + totalPayments);
+
+		double totalInterest = loanCalcHelper.getTotalInterest();
+		lblTotalInterest.setText("" + totalInterest);
+
+		double monthlyRate = loanCalcHelper.getMonthlyRate();
+		ratePerMonth.setText(monthlyRate + "%");
+
+		ObservableList<Payment> paymentDetailsList = FXCollections.observableArrayList();
+		 for (Payment pd: paymentDetails) {
+		 	paymentDetailsList.addAll(pd);
+		 }
+		 tvResults.setItems(paymentDetailsList);
+
+		loanCalcHelper.reset();
 		/*
 		 * When this button is clicked, you need to do the following:
 		 * 
@@ -88,7 +131,17 @@ public class LoanCalcViewController implements Initializable   {
 		 * Additional Payment - based on Additional Payment given by user
 		 * Interest - Calculate based on 
 		 */
-		
 	}
-	
+	@FXML
+	private void btnReset(ActionEvent event) {
+		LoanAmount.clear();
+		InterestRate.clear();
+		NbrOfYears.clear();
+		PaymentStartDate.setValue(null);
+		tvResults.getItems().clear();
+		loanCalcHelper.reset();
+		lblTotalPayments.setText("");
+		lblTotalInterest.setText("");
+		ratePerMonth.setText("");
+	}
 }

@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="615.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoanCalcViewController">
+<BorderPane prefHeight="727.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoanCalcViewController">
 	<top>
-		<HBox alignment="CENTER" prefHeight="21.0" prefWidth="814.0" BorderPane.alignment="CENTER" />
+		<HBox alignment="CENTER" prefHeight="23.0" prefWidth="814.0" BorderPane.alignment="CENTER" />
 	</top>
 	<bottom>
-		<HBox alignment="CENTER" prefHeight="69.0" prefWidth="872.0" BorderPane.alignment="CENTER">
+		<HBox alignment="CENTER" prefHeight="83.0" prefWidth="39.0" BorderPane.alignment="CENTER">
 			<children>
-				<HBox alignment="CENTER" prefHeight="189.0" prefWidth="200.0">
+				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 					<children>
 						<Button mnemonicParsing="false" onAction="#btnCalcLoan" text="Calculate" />
 					</children>
@@ -29,9 +29,9 @@
 		</HBox>
 	</bottom>
 	<center>
-		<VBox alignment="CENTER" prefHeight="532.0" prefWidth="883.0" BorderPane.alignment="CENTER">
+		<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 			<children>
-				<HBox alignment="CENTER" prefHeight="152.0" prefWidth="883.0">
+				<HBox alignment="CENTER" prefHeight="152.0" prefWidth="814.0">
 					<children>
 						<GridPane prefHeight="152.0" prefWidth="280.0">
 							<columnConstraints>
@@ -73,22 +73,22 @@
 							<children>
 								<Label text="Total Payments" />
 								<Label text="Total Interest" GridPane.rowIndex="1" />
-								<Label fx:id="lblTotalPayemnts" prefHeight="18.0" prefWidth="174.0" GridPane.columnIndex="1" />
+								<Label fx:id="lblTotalPayments" prefHeight="18.0" prefWidth="174.0" GridPane.columnIndex="1" />
 							</children>
 						</GridPane>
 					</children>
 				</HBox>
-				<HBox alignment="CENTER" prefHeight="375.0" prefWidth="883.0">
+				<HBox alignment="CENTER" prefHeight="231.0" prefWidth="651.0">
 					<children>
-						<TableView fx:id="tvResults" prefHeight="309.0" prefWidth="815.0">
+						<TableView fx:id="tvResults" prefHeight="231.0" prefWidth="815.0">
 							<columns>
 								<TableColumn fx:id="colPaymentNumber" prefWidth="75.0" text="Payment #" />
 								<TableColumn prefWidth="114.0" text="Due Date" />
-								<TableColumn prefWidth="102.0" text="Payment" />
-								<TableColumn prefWidth="143.0" text="Additonal Payment" />
-								<TableColumn prefWidth="111.0" text="Interest" />
-								<TableColumn prefWidth="146.0" text="Principle" />
-								<TableColumn prefWidth="122.0" text="Balance" />
+								<TableColumn prefWidth="85.0" text="Payment" />
+								<TableColumn prefWidth="140.0" text="Additonal Payment" />
+								<TableColumn prefWidth="148.0" text="Interest" />
+								<TableColumn prefWidth="129.0" text="Principle" />
+								<TableColumn prefWidth="75.0" text="Balance" />
 							</columns>
 						</TableView>
 					</children>
