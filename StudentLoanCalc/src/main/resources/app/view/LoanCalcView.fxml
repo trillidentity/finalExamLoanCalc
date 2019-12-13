@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="727.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoanCalcViewController">
+<BorderPane prefHeight="727.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.LoanCalcViewController">
 	<top>
 		<HBox alignment="CENTER" prefHeight="23.0" prefWidth="814.0" BorderPane.alignment="CENTER" />
 	</top>
@@ -46,7 +46,6 @@
 								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 							</rowConstraints>
 							<children>
-								<Label text="Loan Amount" />
 								<Label text="Interest Rate" GridPane.rowIndex="1" />
 								<Label text="Term of Loan/years" GridPane.rowIndex="2" />
 								<Label text="First Payment Date" GridPane.rowIndex="3" />
@@ -55,6 +54,8 @@
 								<TextField fx:id="InterestRate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 								<TextField fx:id="NbrOfYears" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 								<DatePicker fx:id="PaymentStartDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            								<Label text="Loan Amount" />
 							</children>
 						</GridPane>
 						<HBox prefHeight="152.0" prefWidth="88.0" />

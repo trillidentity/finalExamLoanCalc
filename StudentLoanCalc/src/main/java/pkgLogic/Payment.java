@@ -2,9 +2,9 @@ package pkgLogic;
 
 import java.time.LocalDate;
 
-public class Payment {
+public class Payment{
 	
-	//TODO: I've accounted for PaymentNbr, you need to add all the other fields for the class
+
 	private int PaymentNbr;
 	private LocalDate DueDate;
 	private double Payment;
@@ -34,12 +34,7 @@ public class Payment {
 	}
 
 
-	
-	//TODO: Fix the constructor, add the fields you've added.
-	/*public Payment(int paymentNbr) {
-		super();
-		PaymentNbr = paymentNbr;
-	} */
+
 
 
 
@@ -47,7 +42,7 @@ public class Payment {
 		PaymentNbr = paymentNbr;
 	}
 	
-	//TODO: Add getters and setters for new fields.	
+	
 	
 	public int getPaymentNbr() {
 		return PaymentNbr;
@@ -79,6 +74,6 @@ public class Payment {
 	}
 	
 	public double getTotalPayment() {
-		return this.getPayment()+ this.AdditionalPayment;
+		return this.getPayment()+ this.getAdditionalPayment();
 	}
 }
