@@ -9,4 +9,5 @@ module StudentLoanCalc {
 	requires poi;
 
 	opens app.controller to javafx.fxml;
+	opens pkgLogic;
 }
